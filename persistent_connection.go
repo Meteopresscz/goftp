@@ -469,6 +469,10 @@ func (pconn *persistentConn) listenActive() (*net.TCPListener, error) {
 		return nil, ftpError{err: fmt.Errorf("error parsing listen port: %s (%s)", err, listenPortStr)}
 	}
 
+	if pconn.config.PortHost != "" {
+		listenHost = pconn.config.PortHost
+	}
+
 	hostIP := net.ParseIP(listenHost)
 	if hostIP == nil {
 		return nil, ftpError{err: fmt.Errorf("failed parsing host IP %s", listenHost)}

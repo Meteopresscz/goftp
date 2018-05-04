@@ -144,6 +144,10 @@ type Config struct {
 	// ":0", i.e. listen on the local control connection host and a random port.
 	ActiveListenAddr string
 
+	// Set host that is used on ftp server by port command. Allows to use active FTP behind
+	// NAT if public IP address is accessible.
+	PortHost string
+
 	// Disables EPSV in favour of PASV. This is useful in cases where EPSV connections
 	// neither complete nor downgrade to PASV successfully by themselves, resulting in
 	// hung connections.
